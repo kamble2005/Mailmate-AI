@@ -417,6 +417,18 @@ function getSuggestedReply(email) {
           }}>
             <h3>{email.name}</h3>
             <p>{email.subject}</p>
+           <button
+  onClick={() => autoClassifyEmail(originalIndex)}
+  style={{
+    background: "#7c3aed",
+    color: "white",
+    padding: "10px",
+    border: "none",
+    borderRadius: "8px"
+  }}
+>
+  ✨ Auto Classify
+</button>
 
             <p>Current Category: {email.category}</p>
 
