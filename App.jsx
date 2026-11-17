@@ -5,6 +5,7 @@ function App() {
   
 const [emails, setEmails] = useState([]);
 const [loading, setLoading] = useState(true);
+  const [suggestedReplies, setSuggestedReplies] = useState({});
 
 useEffect(() => {
   fetch(`${API_URL}/api/emails`)
