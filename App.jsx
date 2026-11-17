@@ -2,6 +2,12 @@
 import { useState } from "react";
 
 function App() {
+  const generateReply = (index) => {
+  setSuggestedReplies((prev) => ({
+    ...prev,
+    [index]: "Thank you for your email. I will get back to you soon."
+  }));
+};
   
 const [emails, setEmails] = useState([]);
 const [loading, setLoading] = useState(true);
