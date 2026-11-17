@@ -150,6 +150,46 @@ function getSuggestedReply(email) {
 
   return "Thank you for your email. I appreciate your message.";
 }
+  function autoClassifyEmail(index) {
+  const email = emails[index];
+  const text = (email.name + " " + email.subject).toLowerCase();
+
+  let newCategory = "Personal";
+  let newPriority = "Medium";
+
+  if (text.includes("google") || text.includes("account")) {
+    newCategory = "Important";
+    newPriority = "High";
+  } else if (
+    text.includes("assignment") ||
+    text.includes("college") ||
+    text.includes("meeting")
+  ) {
+    newCategory = "Work";
+    newPriority = "High";
+  } else if (
+    text.includes("order") ||
+    text.includes("offer") ||
+    text.includes("sale")
+  ) {
+    newCategory = "Promotions";
+    newPriority = "Low";
+  }
+
+  setEmails((previous) =>
+    previous.map((item, i) =>
+      i === index
+        ? {
+            ...item,
+            category: newCategory,
+            priority: newPriority
+          }
+        : item
+    )
+  );
+
+  alert("Smart classification completed!");
+}
   function sendEmail() {
     if (!to || !subject || !message) {
       alert("Please fill all fields!");
