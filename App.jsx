@@ -136,20 +136,35 @@ function deleteEmail(index) {
 }
 
 function getSuggestedReply(email) {
+  const subject = email.subject.toLowerCase();
+
+  if (subject.includes("interview")) {
+    return "Thank you for the interview opportunity. I am looking forward to discussing this opportunity with you.";
+  }
+
+  if (subject.includes("assignment")) {
+    return "Thank you for the update. I will complete the assignment and submit it on time.";
+  }
+
+  if (subject.includes("meeting")) {
+    return "Thank you for informing me. I confirm my availability for the meeting.";
+  }
+
   if (email.category === "Work") {
-    return "Thank you for your email. I will review it and get back to you soon.";
+    return "Thank you for your email. I have received your message and will get back to you shortly.";
   }
 
   if (email.category === "Promotions") {
-    return "Thank you for sharing this offer.";
+    return "Thank you for sharing this offer. I appreciate the information.";
   }
 
   if (email.category === "Personal") {
-    return "Hello! Thank you for your message. Hope you are doing well!";
+    return "Hello! Thank you for your message. I hope you are doing well.";
   }
 
-  return "Thank you for your email. I appreciate your message.";
+  return "Thank you for your email. I appreciate your message and will respond soon.";
 }
+  
   function autoClassifyEmail(index) {
   const email = emails[index];
   const text = (email.name + " " + email.subject).toLowerCase();
