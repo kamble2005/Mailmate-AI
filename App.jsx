@@ -3,40 +3,24 @@ import { useState } from "react";
 
 function App() {
   
-const [emails, setEmails] = useState([
-  {
-    name: "Google",
-    subject: "Welcome to Google",
-    category: "Important",
-    replyStatus: "No Reply Needed",
-    priority: "Low",
-    read: false
-  },
-  {
-    name: "College",
-    subject: "Assignment Submission",
-    category: "Work",
-    replyStatus: "Needs Reply",
-    priority: "High" ,
-    read: false
-  },
-  {
-    name: "Amazon",
-    subject: "Your Order Update",
-    category: "Promotions",
-    replyStatus: "No Reply Needed",
-    priority: "Medium",
-    read: false
-  },
-  {
-    name: "Friend",
-    subject: "Hello! How are you?",
-    category: "Personal",
-    replyStatus: "Needs Reply",
-    priority: "High",
-    read: false
-  }
-]);
+const [emails, setEmails] = useState([]);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  fetch(`${API_URL}/api/emails`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        setEmails(data.emails);
+      }
+    })
+    .catch((error) => {
+      console.log("Backend Error:", error);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+}, []);
 
 
   const [search, setSearch] = useState("");
