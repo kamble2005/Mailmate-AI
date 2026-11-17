@@ -439,6 +439,9 @@ function getSuggestedReply(email) {
           }}>
             <h3>{email.name}</h3>
             <p>{email.subject}</p>
+  {suggestedReplies[index] && (
+  <p>AI Reply: {suggestedReplies[index]}</p>
+)}
            <button
   onClick={() => autoClassifyEmail(originalIndex)}
   style={{
