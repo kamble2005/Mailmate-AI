@@ -163,7 +163,9 @@ function getSuggestedReply(email) {
     setShowCompose(false);
   }
 
-  return (
+  return
+  {loading && <h2>Loading Emails...</h2>}
+    (
     <div style={{
       fontFamily: "Arial",
       padding: "20px",
