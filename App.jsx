@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 
-const API_URL = "https://mailmate-ai-2.onrender.com";
+const API_URL = "https://mailmate-ai-p3vl.onrender.com"
 
 function App() {
   const [emails, setEmails] = useState([]);
